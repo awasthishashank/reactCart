@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { useContext } from "react";
 import CartContext from "../../store/CartContext";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const productsArr = [
   {
@@ -32,12 +33,14 @@ const productsArr = [
 ];
 
 const ProductItem = () => {
+  // const history  = useHistory()
   const { addToCart } = useContext(CartContext);
 
   // Pass the product as an argument to handleClick
   const handleClick = (product) => {
     console.log("clicked HC");
     addToCart(product);
+    // history.replace('/Cart')
   };
 
   return (

@@ -7,21 +7,24 @@ import About from "./Pages/About";
 import Footer from "./components/Footer/Footer";
 import { CartProvider } from "./store/CartProvider";
 import AddContact from "./Pages/Contact";
-import { Route , Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
 import ProductDetail from "./components/Product/ProductDetail";
+import AuthForm from "./Pages/AuthForm";
+import { Switch } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
   return (
   <CartProvider>
     <Header />
-    <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
-    <Route path="/contact" element={<AddContact />} />
-    <Route exact path="/store" element={<ProductItems />} />
-    <Route path="/cart" element={<CartSection />} />
-    <Route path="store/:productId" element={<ProductDetail />} />
-  </Routes>
+    <Switch>
+    <Route path="/"exact ><Home /></Route>
+    <Route path="/about"><About /></Route>
+    <Route path="/auth"><AuthForm /></Route>
+    <Route path="/contact"><AddContact /></Route>
+    <Route exact path="/store" ><ProductItems /></Route>
+    <Route path="/cart" ><CartSection /></Route>
+    <Route path="/store/:productId"><ProductDetail/></Route>
+  </Switch>
   < Footer/>
   </CartProvider>
   );
